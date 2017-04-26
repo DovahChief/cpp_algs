@@ -29,21 +29,38 @@ void mergeSort(T v[], int l, int r){
 
 //funcion merge que une los arrays
 template <typename T>
-void merge(T v[], int l, int m, int r){
-    int n1 = m-l+1, n2 = r-m; //n1 y n2 numero de elementos en cada arreglo
-	T L[n1], R[n2]; //declara dos arreglos temporales l y r
-    for (int i = 0; i < n1; i++)  L[i] = v[l + i];//llena el arreglo de la der
-    for (int j = 0; j < n2; j++)  R[j] = v[m+1+j];//llena el arreglo de la izq
+void merge(T arreglo[], int left, int mid, int right){
+    int size_l = mid-left+1, size_r = right-mid;
+	
+    T LEFT[size_l], RIGHT[size_r];
+    
+    for (int i = 0; i < size_l; i++)  LEFT[i]  = arreglo[left +i];
+    for (int i = 0; i < size_r; i++)  RIGHT[i] = arreglo[mid+1+i];
 
-    int i = 0, j = 0, k = l;
-    while (i < n1 && j < n2) {
-        if (L[i] <= R[j]) { v[k] = L[i];    i++;} //
-        else              { v[k] = R[j];    j++;}
-        k++;
+    int pos_l = 0, pos_r = 0, pos_arreglo = left;
+    while (pos_l < size_l && pos_r < size_r) { //ciclo de merge
+        if (LEFT[pos_l] <= RIGHT[pos_r]) {
+            arreglo[pos_arreglo] = LEFT[pos_l];
+            pos_l++;
+        } else{
+            arreglo[pos_arreglo] = RIGHT[pos_r];
+            pos_r++;
+        }
+        pos_arreglo++;
+    }//fin del ciclo de merge
+    
+    //si arriba no se pusieron todos los elementos de el arreglo LEFT
+    while(pos_l < size_l) { 
+        arreglo[pos_arreglo] = LEFT[pos_l];
+        pos_arreglo++;
+        pos_l++;
     }
-    //ciclos que copian los elementos restantes de L o R al arreglo
-    while(i < n1) { v[k] = L[i];  i++;    k++; }  //ciclo de L
-    while(j < n2) { v[k] = R[j];  j++;    k++; }  //coclo de R
+    while(pos_r < size_r) {
+        arreglo[pos_arreglo] = RIGHT[pos_r];
+        pos_arreglo++; 
+        pos_r++;
+        
+    }  //ciclo de R
 }
 
 #endif
