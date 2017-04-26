@@ -12,7 +12,7 @@ int main() {
     for (auto&& x : v){
         arbol.agrega_nodo(x, "nodo : "+ std::to_string(x));
     }
-    arbol.elimina(1); //revisar funcion
+    arbol.elimina(1); //revisar funcion 
     
     std::cout<<"recorriendo arbol "<<std::endl;
     arbol.rec_inorden(arbol.get_raiz());
@@ -24,7 +24,7 @@ int main() {
         std::cout<<x<<std::endl;
     }
     
-    int val = 12;
+    int val = 12; 
     auto x = binsearch(v, val);
    
     std::cout<<""<<std::endl;

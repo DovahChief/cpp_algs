@@ -5,9 +5,16 @@
 
 //protoripos
 template <typename T>
-void mergeSort(T v[], int l, int r);
+void mergeSort(T arreglo[], int left, int right);
+
 template <typename T>
-void merge(T v[], int l, int m, int r);
+void merge(T arreglo[], int left, int mid, int right);
+
+template <typename T>
+static void llenasub_arr(T arreglo[], T sub_arreglo[], int inicio, int fin);
+
+template <typename T>
+static void ciclo_merge(T arreglo[], T sub_arreglo_izq[], T sub_arreglo_der[], int inicio ,int size_l, int size_r);
 
 
 //diferente punto de entrada
@@ -18,49 +25,65 @@ void mergeSort(std::vector<T>& vec){
 
 //funcion mergesort que llama a recursion hasta dividir en unidades el arreglo
 template <typename T>
-void mergeSort(T v[], int l, int r){
-    if (l < r){
-        auto m = l+(r-l)/2;
-        mergeSort(v, l, m);
-        mergeSort(v, m+1, r);
-        merge(v, l, m, r);
+void mergeSort(T arreglo[], int left, int right){
+    if (left < right){
+        auto mid = left+(right-left)/2;
+        mergeSort(arreglo, left, mid);
+        mergeSort(arreglo, mid+1, right);
+        merge(arreglo, left, mid, right);
     }
 }
 
 //funcion merge que une los arrays
 template <typename T>
 void merge(T arreglo[], int left, int mid, int right){
+    
     int size_l = mid-left+1, size_r = right-mid;
-	
     T LEFT[size_l], RIGHT[size_r];
     
-    for (int i = 0; i < size_l; i++)  LEFT[i]  = arreglo[left +i];
-    for (int i = 0; i < size_r; i++)  RIGHT[i] = arreglo[mid+1+i];
+    llenasub_arr(arreglo, LEFT , left    , size_l);
+    llenasub_arr(arreglo, RIGHT, (mid+1) , size_r);
+    ciclo_merge(arreglo, LEFT, RIGHT, left, size_l, size_r);
+    
+}
 
-    int pos_l = 0, pos_r = 0, pos_arreglo = left;
+template <typename T>
+static void llenasub_arr(T arreglo[], T sub_arreglo[], int inicio, int fin){
+    for (int i = 0; i < fin; i++)  sub_arreglo[i] = arreglo[inicio + i];
+}
+
+template <typename T>
+static void ciclo_merge(T arreglo[], T sub_arreglo_izq[], T sub_arreglo_der[], int inicio, int size_l, int size_r){
+    
+    //pos_l posicion en el sub arreglo LEFT
+    //pos_r posicion en el sub arreglo RIGHT
+    
+    int pos_l = 0, pos_r = 0, pos_arreglo = inicio;
+    
     while (pos_l < size_l && pos_r < size_r) { //ciclo de merge
-        if (LEFT[pos_l] <= RIGHT[pos_r]) {
-            arreglo[pos_arreglo] = LEFT[pos_l];
+        if (sub_arreglo_izq[pos_l] <= sub_arreglo_der[pos_r]) {
+            arreglo[pos_arreglo] = sub_arreglo_izq[pos_l];
             pos_l++;
         } else{
-            arreglo[pos_arreglo] = RIGHT[pos_r];
+            arreglo[pos_arreglo] = sub_arreglo_der[pos_r];
             pos_r++;
         }
         pos_arreglo++;
     }//fin del ciclo de merge
     
-    //si arriba no se pusieron todos los elementos de el arreglo LEFT
     while(pos_l < size_l) { 
-        arreglo[pos_arreglo] = LEFT[pos_l];
+        arreglo[pos_arreglo] = sub_arreglo_izq[pos_l];
         pos_arreglo++;
         pos_l++;
     }
     while(pos_r < size_r) {
-        arreglo[pos_arreglo] = RIGHT[pos_r];
+        arreglo[pos_arreglo] = sub_arreglo_der[pos_r];
         pos_arreglo++; 
         pos_r++;
         
-    }  //ciclo de R
+    }
+    
+    
 }
 
 #endif
