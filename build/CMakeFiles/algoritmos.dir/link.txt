@@ -1,0 +1,1 @@
+/usr/bin/c++   -g   CMakeFiles/algoritmos.dir/main.cpp.o CMakeFiles/algoritmos.dir/bintree.cpp.o  -o algoritmos -rdynamic 

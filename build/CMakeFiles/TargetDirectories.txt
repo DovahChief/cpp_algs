@@ -1,0 +1,7 @@
+/home/jose/Documentos/c++/Algoritmos/Algoritmos/build/CMakeFiles/install/strip.dir
+/home/jose/Documentos/c++/Algoritmos/Algoritmos/build/CMakeFiles/install/local.dir
+/home/jose/Documentos/c++/Algoritmos/Algoritmos/build/CMakeFiles/algoritmos.dir
+/home/jose/Documentos/c++/Algoritmos/Algoritmos/build/CMakeFiles/rebuild_cache.dir
+/home/jose/Documentos/c++/Algoritmos/Algoritmos/build/CMakeFiles/edit_cache.dir
+/home/jose/Documentos/c++/Algoritmos/Algoritmos/build/CMakeFiles/install.dir
+/home/jose/Documentos/c++/Algoritmos/Algoritmos/build/CMakeFiles/list_install_components.dir
