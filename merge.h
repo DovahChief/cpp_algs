@@ -11,10 +11,10 @@ template <typename T>
 void merge(T arreglo[], int left, int mid, int right);
 
 template <typename T>
-static void llenasub_arr(T arreglo[], T sub_arreglo[], int inicio, int fin);
+static inline void llenasub_arr(T arreglo[], T sub_arreglo[], int inicio, int fin);
 
 template <typename T>
-static void ciclo_merge(T arreglo[], T sub_arreglo_izq[], T sub_arreglo_der[], int inicio ,int size_l, int size_r);
+static inline void ciclo_merge(T arreglo[], T sub_arreglo_izq[], T sub_arreglo_der[], int inicio    ,int size_l, int size_r) ;
 
 
 //diferente punto de entrada
@@ -48,15 +48,13 @@ void merge(T arreglo[], int left, int mid, int right){
 }
 
 template <typename T>
-static void llenasub_arr(T arreglo[], T sub_arreglo[], int inicio, int fin){
+static inline void llenasub_arr(T arreglo[], T sub_arreglo[], int inicio, int fin){
     for (int i = 0; i < fin; i++)  sub_arreglo[i] = arreglo[inicio + i];
 }
 
 template <typename T>
-static void ciclo_merge(T arreglo[], T sub_arreglo_izq[], T sub_arreglo_der[], int inicio, int size_l, int size_r){
-    
-    //pos_l posicion en el sub arreglo LEFT
-    //pos_r posicion en el sub arreglo RIGHT
+static inline void ciclo_merge(T arreglo[], T sub_arreglo_izq[], T sub_arreglo_der[], int           
+                                inicio, int size_l, int size_r){
     
     int pos_l = 0, pos_r = 0, pos_arreglo = inicio;
     
@@ -69,7 +67,7 @@ static void ciclo_merge(T arreglo[], T sub_arreglo_izq[], T sub_arreglo_der[], i
             pos_r++;
         }
         pos_arreglo++;
-    }//fin del ciclo de merge
+    }
     
     while(pos_l < size_l) { 
         arreglo[pos_arreglo] = sub_arreglo_izq[pos_l];
@@ -80,10 +78,7 @@ static void ciclo_merge(T arreglo[], T sub_arreglo_izq[], T sub_arreglo_der[], i
         arreglo[pos_arreglo] = sub_arreglo_der[pos_r];
         pos_arreglo++; 
         pos_r++;
-        
-    }
-    
-    
+    }    
 }
 
 #endif
