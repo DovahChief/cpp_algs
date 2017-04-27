@@ -11,13 +11,13 @@ vector
 -
 
 /home/jose/Documentos/c++/Algoritmos/Algoritmos/bintree.cpp
-bintree.h
-/home/jose/Documentos/c++/Algoritmos/Algoritmos/bintree.h
 
 /home/jose/Documentos/c++/Algoritmos/Algoritmos/bintree.h
 string
 -
 iostream
+-
+vector
 -
 
 /home/jose/Documentos/c++/Algoritmos/Algoritmos/main.cpp
@@ -30,6 +30,8 @@ merge.h
 bintree.h
 /home/jose/Documentos/c++/Algoritmos/Algoritmos/bintree.h
 vector
+-
+string
 -
 
 /home/jose/Documentos/c++/Algoritmos/Algoritmos/merge.h
