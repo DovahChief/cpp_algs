@@ -14,16 +14,6 @@ iostream
 vector
 -
 
-/home/jose/Documentos/c++/Algoritmos/Algoritmos/bintree.h
-string
--
-iostream
--
-vector
--
-algorithm
--
-
 /home/jose/Documentos/c++/Algoritmos/Algoritmos/main.cpp
 iostream
 -
@@ -35,8 +25,6 @@ binsearc.h
 /home/jose/Documentos/c++/Algoritmos/Algoritmos/binsearc.h
 merge.h
 /home/jose/Documentos/c++/Algoritmos/Algoritmos/merge.h
-bintree.h
-/home/jose/Documentos/c++/Algoritmos/Algoritmos/bintree.h
 avlTree.h
 /home/jose/Documentos/c++/Algoritmos/Algoritmos/avlTree.h
 

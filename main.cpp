@@ -4,7 +4,6 @@
 
 #include "binsearc.h"
 #include "merge.h"
-#include "bintree.h"
 #include "avlTree.h"
 
 
@@ -12,13 +11,14 @@ int main() {
 	
 	
 	arbol_binario arbol;
-	arbol.inserta(4,'t');
-	arbol.inserta(2,'u');
-	arbol.inserta(6,'u');
-	arbol.inserta(1,'d');
-	arbol.inserta(3,'d');
-	arbol.inserta(5,'d');
-	arbol.inserta(7,'d');
+	arbol.inserta(4,'c');
+	arbol.inserta(2,'d');
+	arbol.inserta(6,'s');
+	arbol.inserta(1,'u');
+	arbol.inserta(3,'t');
+	arbol.inserta(5,'C');
+	arbol.inserta(7,'S');
+	
 	
 	std::cout<<"\n\n----RECORRIDO IN-ORDEN-----"<<std::endl;
 	arbol.rec_inorden(arbol.get_raiz());
@@ -26,6 +26,9 @@ int main() {
 	arbol.rec_posorden(arbol.get_raiz());
 	std::cout<<"\n\n----RECORRIDO PRE-ORDEN-----"<<std::endl;
 	arbol.rec_preorden(arbol.get_raiz());
+	
+	std::cout<<"\n\n Buscando valor  3 : "<< (arbol.binsearch(4))->data <<std::endl;
+	
     /*
 	 nodo_a x  {1, 'a'};
 	//x.data = 'y';

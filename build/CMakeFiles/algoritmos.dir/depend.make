@@ -3,7 +3,6 @@
 
 CMakeFiles/algoritmos.dir/main.cpp.o: ../avlTree.h
 CMakeFiles/algoritmos.dir/main.cpp.o: ../binsearc.h
-CMakeFiles/algoritmos.dir/main.cpp.o: ../bintree.h
 CMakeFiles/algoritmos.dir/main.cpp.o: ../main.cpp
 CMakeFiles/algoritmos.dir/main.cpp.o: ../merge.h
 
