@@ -18,20 +18,26 @@ int main() {
 	arbol.inserta(3,'t');
 	arbol.inserta(5,'C');
 	arbol.inserta(7,'S');
+	arbol.inserta(7,'X');
 	
-	arbol.find_max(arbol.get_raiz());
+	std::cout<<"\n\n Buscando valor  7 : "<< (arbol.binsearch(7)) <<std::endl;
+	std::cout<<" contenido de 7 : "<< (arbol.binsearch(7)) <<std::endl;
+	//arbol.inserta(7,'X');
+	arbol.remueve(2);
+	
 	arbol.find_min(arbol.get_raiz());
 	
 	std::cout<<"\n\n----RECORRIDO IN-ORDEN-----"<<std::endl;
 	arbol.rec_inorden(arbol.get_raiz());
+	/*/*
 	std::cout<<"\n\n----RECORRIDO POS-ORDEN-----"<<std::endl;
 	arbol.rec_posorden(arbol.get_raiz());
 	std::cout<<"\n\n----RECORRIDO PRE-ORDEN-----"<<std::endl;
 	arbol.rec_preorden(arbol.get_raiz());
 	
-	std::cout<<"\n\n Buscando valor  3 : "<< (arbol.binsearch(4))->data <<std::endl;
+	std::cout<<"\n\n Buscando valor  3 : "<< (arbol.binsearch(3))->data <<std::endl;
 	
-    /*
+    
 	 nodo_a x  {1, 'a'};
 	//x.data = 'y';
 	nodo_a y  {2, 'b', &x};

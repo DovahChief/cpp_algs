@@ -54,6 +54,39 @@ private:
 			if(focus == nullptr) return(pad);
 		}
 	}
+	
+	inline nodo* Delete(nodo* nod, int _k){
+		if(nod == nullptr) return (nod);
+		
+		else if(_k < nod->key) nod->hijo_izq = Delete(nod->hijo_izq, _k);
+		else if(_k > nod->key) nod->hijo_der = Delete(nod->hijo_der, _k);
+		else{
+			//es hoja del arbol
+			if(nod->es_hoja()){
+				delete nod;
+				nod == nullptr;
+			}
+			//caso de un hijo
+			else if(nod->hijo_izq == nullptr){
+				nodo* temp = nod;
+				nod = nod->hijo_der;
+				delete temp;
+			}else if(nod->hijo_der == nullptr){
+				nodo* temp = nod;
+				nod = nod->hijo_izq;
+				delete temp;
+			} //dos hijos 
+				//cambiando por min right subtree (puede ser max en left subtree)
+			else {
+				nodo* temp = find_min(nod->hijo_der);
+				nod->data = temp->data; 
+				nod->key = temp->key;
+				nod->hijo_der = Delete(nod->hijo_der, temp->data);
+			}
+		}
+		
+		return nod;
+	}
 
 	
 	
@@ -66,35 +99,39 @@ public:
 	
 	inline nodo* get_raiz(){return (raiz);}
 	
+	nodo* binsearch(int _k){
+		
+		if(raiz == nullptr || _k == raiz->key) return (raiz);
+		nodo* focus = raiz;
+		while(_k != focus->key){
+			focus = (_k > focus->key)? focus->hijo_der : focus->hijo_izq;
+			if(focus == nullptr ||focus->key == _k ) return (focus);
+		}
+	}
+	
 	void inserta(int _k, char data){
+		if(binsearch(_k) != nullptr){
+			std::cout<<"Ya existe un elemento con la llave que elegiste"<<std::endl;
+			return;
+		}
 		nodo* nuevo = new nodo(_k, data, nullptr, nullptr, nullptr);
 		if(raiz == nullptr){
 			raiz = nuevo;
 			return;
 		}else {
 			nodo* padr = find_insertN(_k);
+			if(padr == nullptr) return;
 			nuevo->padre = padr;
 			(_k > padr->key)? padr->hijo_der = nuevo : padr->hijo_izq = nuevo;
 		}
 	}
 	
-	inline nodo* binsearch(int _k){
-		if(_k == raiz->key) return (raiz);
-		auto focus = raiz;
-		while(_k != focus->key){
-			focus = (_k > focus->key)? focus->hijo_der : focus->hijo_izq;
-			if(focus->key == _k || focus == nullptr) return (focus);
-		}
-	}
+	
 	//borra un elemento del arbol
 	void remueve(int _k){
-		auto nod = binsearch(_k);
-		
+		Delete(binsearch(_k), _k);
 	}
-	
-	
-  
-	
+
 	//funciones de recorrido
 	void rec_inorden(nodo* focus){
 		if(focus != nullptr){
@@ -124,20 +161,20 @@ public:
 		}
 	}
 	
-	void find_min(nodo* focus){
-		if(focus == nullptr) return;
+	nodo* find_min(nodo* focus){
+		if(focus == nullptr) return (nullptr);
 		while(focus->hijo_izq != nullptr)
 			focus = focus->hijo_izq;
-		std::cout<<"----MINIMO----\t";
-		focus->print();
+		//focus->print();
+		return (focus);
 	}
 	
-	void find_max(nodo* focus){
-		if(focus == nullptr) return;
+	nodo* find_max(nodo* focus){
+		if(focus == nullptr) return (nullptr);
 		while(focus->hijo_der != nullptr)
 			focus = focus->hijo_der;
-		std::cout<<"----MAXIMO----\t";
-		focus->print();
+		//focus->print();
+		return (focus);
 	}
 	
 	
