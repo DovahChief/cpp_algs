@@ -4,7 +4,7 @@
 
 #include "binsearc.h"
 #include "merge.h"
-#include "avlTree.h"
+#include "arbolBin.h"
 
 
 int main() {
@@ -19,6 +19,8 @@ int main() {
 	arbol.inserta(5,'C');
 	arbol.inserta(7,'S');
 	
+	arbol.find_max(arbol.get_raiz());
+	arbol.find_min(arbol.get_raiz());
 	
 	std::cout<<"\n\n----RECORRIDO IN-ORDEN-----"<<std::endl;
 	arbol.rec_inorden(arbol.get_raiz());

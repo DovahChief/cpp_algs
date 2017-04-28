@@ -4,15 +4,15 @@
 //prubando con data tipo char
 #include <iostream>
 
-struct nodo_a{
+struct nodo{
 	int key;
 	char data;
 	
-	nodo_a* padre = nullptr;
-	nodo_a* hijo_der = nullptr;
-	nodo_a* hijo_izq = nullptr;
+	nodo* padre = nullptr;
+	nodo* hijo_der = nullptr;
+	nodo* hijo_izq = nullptr;
 	
-	nodo_a(int k, char d,nodo_a* p = nullptr, nodo_a* hd = nullptr,nodo_a* hi= nullptr)
+	nodo(int k, char d,nodo* p = nullptr, nodo* hd = nullptr, nodo* hi= nullptr)
 	: key(k), data(d) {
 		padre = p;
 		hijo_der = hd;
@@ -33,15 +33,19 @@ struct nodo_a{
 		return (hijo_der != nullptr && hijo_izq != nullptr);
 	}
 	
+	void print(){
+		std::cout<<"nodo # "<<this->key<<" dat: "<< this->data <<std::endl;
+	}
+	
 };
 
 class arbol_binario {
 	
 private:
-	nodo_a* raiz;
+	nodo* raiz;
 	
 	//busca en que node se bede insertar un nuevo valor
-	inline nodo_a* find_insertN(int _k){
+	inline nodo* find_insertN(int _k){
 		auto focus = raiz;
 		auto pad = focus;
 		while(true){
@@ -60,21 +64,21 @@ public:
 		raiz = nullptr;
 	}
 	
-	inline nodo_a* get_raiz(){return (raiz);}
+	inline nodo* get_raiz(){return (raiz);}
 	
 	void inserta(int _k, char data){
-		nodo_a* nuevo = new nodo_a(_k, data, nullptr, nullptr, nullptr);
+		nodo* nuevo = new nodo(_k, data, nullptr, nullptr, nullptr);
 		if(raiz == nullptr){
 			raiz = nuevo;
 			return;
 		}else {
-			nodo_a* padr = find_insertN(_k);
+			nodo* padr = find_insertN(_k);
 			nuevo->padre = padr;
 			(_k > padr->key)? padr->hijo_der = nuevo : padr->hijo_izq = nuevo;
 		}
 	}
 	
-	inline nodo_a* binsearch(int _k){
+	inline nodo* binsearch(int _k){
 		if(_k == raiz->key) return (raiz);
 		auto focus = raiz;
 		while(_k != focus->key){
@@ -92,32 +96,48 @@ public:
   
 	
 	//funciones de recorrido
-	void rec_inorden(nodo_a* focus){
+	void rec_inorden(nodo* focus){
 		if(focus != nullptr){
 		rec_inorden( focus->hijo_izq );
-		std::cout<<"nodo # "<<focus->key<<" dat: "<< focus->data <<std::endl;
+		focus->print();
 		rec_inorden( focus->hijo_der );
 		}
 	}
 	
-	void rec_preorden(nodo_a* focus){
+	void rec_preorden(nodo* focus){
 		if(focus != nullptr){
-		std::cout<<"nodo # "<<focus->key<<" dat: "<< focus->data <<std::endl;
+		focus->print();
 		rec_preorden( focus->hijo_izq );
 		rec_preorden( focus->hijo_der );
 		}
 	}
 	
-	void rec_posorden(nodo_a* focus, bool borra = false){
+	void rec_posorden(nodo* focus, bool borra = false){
 		if(focus != nullptr){
 		rec_posorden( focus->hijo_izq );
 		rec_posorden( focus->hijo_der );
 		
 		if(!borra)
-			std::cout<<"nodo # "<<focus->key<<" dat: "<< focus->data <<std::endl;
+			focus->print();
 		else
 			delete focus;
 		}
+	}
+	
+	void find_min(nodo* focus){
+		if(focus == nullptr) return;
+		while(focus->hijo_izq != nullptr)
+			focus = focus->hijo_izq;
+		std::cout<<"----MINIMO----\t";
+		focus->print();
+	}
+	
+	void find_max(nodo* focus){
+		if(focus == nullptr) return;
+		while(focus->hijo_der != nullptr)
+			focus = focus->hijo_der;
+		std::cout<<"----MAXIMO----\t";
+		focus->print();
 	}
 	
 	
