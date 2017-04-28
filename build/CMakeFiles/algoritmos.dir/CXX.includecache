@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/jose/Documentos/c++/Algoritmos/Algoritmos/avlTree.h
+iostream
+-
+
 /home/jose/Documentos/c++/Algoritmos/Algoritmos/binsearc.h
 vector
 -
@@ -16,6 +20,8 @@ string
 iostream
 -
 vector
+-
+algorithm
 -
 
 /home/jose/Documentos/c++/Algoritmos/Algoritmos/main.cpp
@@ -31,14 +37,10 @@ merge.h
 /home/jose/Documentos/c++/Algoritmos/Algoritmos/merge.h
 bintree.h
 /home/jose/Documentos/c++/Algoritmos/Algoritmos/bintree.h
-structBST.h
-/home/jose/Documentos/c++/Algoritmos/Algoritmos/structBST.h
+avlTree.h
+/home/jose/Documentos/c++/Algoritmos/Algoritmos/avlTree.h
 
 /home/jose/Documentos/c++/Algoritmos/Algoritmos/merge.h
 vector
--
-
-/home/jose/Documentos/c++/Algoritmos/Algoritmos/structBST.h
-iostream
 -
 

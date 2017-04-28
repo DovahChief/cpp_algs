@@ -5,12 +5,75 @@
 #include "binsearc.h"
 #include "merge.h"
 #include "bintree.h"
-#include "structBST.h"
+#include "avlTree.h"
+
 
 int main() {
-    std::vector<int> v {9,8,7,3,6,4,1,11};
-    
 	
+	
+	arbol_binario arbol;
+	arbol.inserta(4,'t');
+	arbol.inserta(2,'u');
+	arbol.inserta(6,'u');
+	arbol.inserta(1,'d');
+	arbol.inserta(3,'d');
+	arbol.inserta(5,'d');
+	arbol.inserta(7,'d');
+	
+	std::cout<<"\n\n----RECORRIDO IN-ORDEN-----"<<std::endl;
+	arbol.rec_inorden(arbol.get_raiz());
+	std::cout<<"\n\n----RECORRIDO POS-ORDEN-----"<<std::endl;
+	arbol.rec_posorden(arbol.get_raiz());
+	std::cout<<"\n\n----RECORRIDO PRE-ORDEN-----"<<std::endl;
+	arbol.rec_preorden(arbol.get_raiz());
+    /*
+	 nodo_a x  {1, 'a'};
+	//x.data = 'y';
+	nodo_a y  {2, 'b', &x};
+	nodo_a* p = new nodo_a(3,'z');
+	std::cout<<std::endl<<std::endl<<"-------ordenando---------"<<std::endl<<std::endl<<std::endl;
+	
+	p->padre = &x;
+	p->hijo_der = &x;
+	p->hijo_izq = &y;
+	
+	
+	std::cout<<"iniciando p"<<std::endl;
+	std::cout<<"direccion de p "<<p<<std::endl;
+	std::cout<<"valor de la llave de p "<<p->key<<std::endl;
+	std::cout<<"contenido de  p "<<p->data<<std::endl;
+	std::cout<<"padre de p "<<p->padre<<std::endl;
+	std::cout<<"hijo derecho de  p "<<p->hijo_der<<std::endl;
+	std::cout<<"hijo izquierdo de p "<< p->hijo_izq<<std::endl;
+	
+	if(x.padre == nullptr) std::cout<<"x no tiene padre"<<std::endl;
+	
+	std::cout<<std::endl<<std::endl<<"-------ordenando---------"<<std::endl<<std::endl<<std::endl;
+	
+	
+	std::cout<<"iniciando x"<<std::endl;
+	std::cout<<"direccion de x "<<&(x)<<std::endl;
+	std::cout<<"valor de la llave de x "<<x.key<<std::endl;
+	std::cout<<"contenido de  x "<<x.data<<std::endl;
+	std::cout<<"padre de x "<<x.padre<<std::endl;
+	std::cout<<"hijo derecho de  x "<<x.hijo_der<<std::endl;
+	std::cout<<"hijo izquierdo de x "<< x.hijo_izq<<std::endl;
+	
+	if(x.padre == nullptr) std::cout<<"x no tiene padre"<<std::endl;
+	
+	std::cout<<std::endl<<std::endl<<"-------ordenando---------"<<std::endl<<std::endl<<std::endl;
+	
+	std::cout<<"iniciando y"<<std::endl;
+	std::cout<<"direccion de y "<<&(y)<<std::endl;
+	std::cout<<"valor de la llave de y "<<y.key<<std::endl;
+	std::cout<<"contenido de  y "<<y.data<<std::endl;
+	std::cout<<"padre de y "<<y.padre<<std::endl;
+	std::cout<<"hijo derecho de  y "<<y.hijo_der<<std::endl;
+	std::cout<<"hijo izquierdo de y "<< y.hijo_izq<<std::endl;
+	
+	if(y.padre == nullptr) std::cout<<"y no tiene padre"<<std::endl;
+	
+	std::vector<int> v {9,8,7,3,6,4,1,11};	
     std::cout<<"-------ordenando---------"<<std::endl;
     
     mergeSort(v);
@@ -26,23 +89,12 @@ int main() {
     std::cout<<((x == true)?"se encontro el ":"no se encontro el ")<<val<<std::endl;
     
 	
-	/*bintree<std::string> arbol;
-            
-    for (const auto& x : v){
-        arbol.agrega_nodo(x, "nodo : "+ std::to_string(x));
-    }
-    
-    arbol.elimina(11); //revisar funcion 
-    
-    std::cout<<"recorriendo arbol "<<std::endl;
-    arbol.rec_inorden(arbol.get_raiz());
-    */
-	binaryTree<std::string> arbol;
+	bintree<std::string> arbol;
 	arbol.inserta(2, "nodo : 1");
 	arbol.inserta(1, "nodo : 2");
 	arbol.inserta(3, "nodo : 3");
 	arbol.rec_inorden(arbol.get_raiz());
-	int R = 0;
 	
-    return R;
+		*/
+    return 0;
 }
