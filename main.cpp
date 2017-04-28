@@ -1,9 +1,11 @@
 #include <iostream>
+#include <vector>
+#include <string>
+
 #include "binsearc.h"
 #include "merge.h"
 #include "bintree.h"
-#include <vector>
-#include <string>
+#include "structBST.h"
 
 int main() {
     std::vector<int> v {9,8,7,3,6,4,1,11};
@@ -35,12 +37,12 @@ int main() {
     std::cout<<"recorriendo arbol "<<std::endl;
     arbol.rec_inorden(arbol.get_raiz());
     */
-	bintree<std::string> arbol;
-	arbol.agrega_nodo(2, "nodo : 1");
-	arbol.agrega_nodo(1, "nodo : 2");
-//	arbol.agrega_nodo(3, "nodo : 3");
+	binaryTree<std::string> arbol;
+	arbol.inserta(2, "nodo : 1");
+	arbol.inserta(1, "nodo : 2");
+	arbol.inserta(3, "nodo : 3");
+	arbol.rec_inorden(arbol.get_raiz());
+	int R = 0;
 	
-//	arbol.rec_inorden(arbol.get_raiz());
-	
-    return 0;
+    return R;
 }

@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/algoritmos.dir/main.cpp.o"
-  "CMakeFiles/algoritmos.dir/bintree.cpp.o"
   "algoritmos.pdb"
   "algoritmos"
 )

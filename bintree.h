@@ -88,6 +88,7 @@ public:
         //agrega un nodo en la posicion correspondiente
         void agrega_nodo(int _k, T data){
             nodo<T>* nuevo = new nodo<T>(_k, data);
+            nodo<T>* padre = nullptr;
             //caso de arbol vacio
             if(raiz == nullptr) {
                 raiz = nuevo;
@@ -96,18 +97,19 @@ public:
             else {
                 nodo<T>* focus = raiz;
                 while(true){
+                    padre = focus;
                     if( _k > focus->get_key() ){
                         focus = focus->get_hijoDER();
                         if(focus == nullptr){
-                            focus->get_padre()->set_hijoDER(nuevo);
-							focus->get_padre()->get_hijoDER()->set_padre(nuevo);
+                            padre->set_hijoDER(nuevo);
+							padre->get_hijoDER()->set_padre(nuevo);
                             return;
                         }                             
                     }else{
                         focus = focus->get_hijoIZQ();
                         if(focus == nullptr){
-                            focus->get_padre()->set_hijoIZQ(nuevo);
-							focus->get_padre()->get_hijoIZQ()->set_padre(nuevo);
+                            padre->set_hijoIZQ(nuevo);
+							padre->get_hijoIZQ()->set_padre(nuevo);
                             return;
                         }
                     }
@@ -128,9 +130,11 @@ public:
         void elimina(int _k){
 
 			nodo<T>* focus = raiz;
-			bool hijo_i = 0;
+            nodo<T>* padre = nullptr;
+
 			
 			while(focus->get_key() != _k){
+                padre = focus;
 				if(_k < focus->get_key())
 					focus = focus->get_hijoIZQ();
 				 else 
@@ -142,36 +146,36 @@ public:
 				if(!focus->tiene_hijos()){ 
 					if(focus == raiz) 
 						raiz = nullptr;
-					else if(focus->get_padre()->get_hijoIZQ() == focus)
-						focus->get_padre()->set_hijoIZQ(nullptr);
+					else if(padre->get_hijoIZQ() == focus)
+						padre->set_hijoIZQ(nullptr);
 					else
-						focus->get_padre()->set_hijoDER(nullptr);
+						padre->set_hijoDER(nullptr);
 				} //no tiene hijo derecho 
 				
 				else if(focus->get_hijoDER() == nullptr){ 
 					if(focus ==  raiz)
 						raiz = focus->get_hijoIZQ();
-					else if(focus->get_padre()->get_hijoIZQ() == focus)
-						focus->get_padre()->set_hijoIZQ(focus->get_hijoIZQ());
+					else if(padre->get_hijoIZQ() == focus)
+						padre->set_hijoIZQ(focus->get_hijoIZQ());
 					else
-						focus->get_padre()->set_hijoDER(focus->get_hijoIZQ());
+						padre->set_hijoDER(focus->get_hijoIZQ());
 				} //no tiene hijo izquierdo
 				
 				else if(focus->get_hijoIZQ() == nullptr){ 
 					if(focus ==  raiz)
 						raiz = focus->get_hijoDER();
-					else if(focus->get_padre()->get_hijoIZQ() == focus)
-						focus->get_padre()->set_hijoIZQ(focus->get_hijoDER());
+					else if(padre->get_hijoIZQ() == focus)
+						padre->set_hijoIZQ(focus->get_hijoDER());
 					else
-						focus->get_padre()->set_hijoDER(focus->get_hijoDER());
+						padre->set_hijoDER(focus->get_hijoDER());
 				} else {
-					nodo<T>* rm = reemplaza(focus);
+					auto rm = reemplaza(focus);
 					if(focus == raiz)
 						raiz = rm;
-					else if(focus->get_padre()->get_hijoIZQ() == focus)
-						focus->get_padre()->set_hijoIZQ(rm);
+					else if(padre->get_hijoIZQ() == focus)
+						padre->set_hijoIZQ(rm);
 					else                 
-						focus->get_padre()->set_hijoDER(rm);
+						padre->set_hijoDER(rm);
 					rm->set_hijoIZQ(focus->get_hijoIZQ());
 				}
         }

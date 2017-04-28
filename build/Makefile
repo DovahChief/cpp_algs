@@ -167,33 +167,6 @@ algoritmos/fast:
 	$(MAKE) -f CMakeFiles/algoritmos.dir/build.make CMakeFiles/algoritmos.dir/build
 .PHONY : algoritmos/fast
 
-bintree.o: bintree.cpp.o
-
-.PHONY : bintree.o
-
-# target to build an object file
-bintree.cpp.o:
-	$(MAKE) -f CMakeFiles/algoritmos.dir/build.make CMakeFiles/algoritmos.dir/bintree.cpp.o
-.PHONY : bintree.cpp.o
-
-bintree.i: bintree.cpp.i
-
-.PHONY : bintree.i
-
-# target to preprocess a source file
-bintree.cpp.i:
-	$(MAKE) -f CMakeFiles/algoritmos.dir/build.make CMakeFiles/algoritmos.dir/bintree.cpp.i
-.PHONY : bintree.cpp.i
-
-bintree.s: bintree.cpp.s
-
-.PHONY : bintree.s
-
-# target to generate assembly for a file
-bintree.cpp.s:
-	$(MAKE) -f CMakeFiles/algoritmos.dir/build.make CMakeFiles/algoritmos.dir/bintree.cpp.s
-.PHONY : bintree.cpp.s
-
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -234,9 +207,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... install"
 	@echo "... list_install_components"
-	@echo "... bintree.o"
-	@echo "... bintree.i"
-	@echo "... bintree.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
