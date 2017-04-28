@@ -19,8 +19,8 @@ struct nodo_a{
 		hijo_izq = hi;
 	}
 	
-	bool tiene_hijos(){
-		return (!(hijo_der == nullptr && hijo_izq == nullptr));
+	bool es_hoja(){
+		return (hijo_der == nullptr && hijo_izq == nullptr);
 	}
 	
 	bool padre_de_uno(){
