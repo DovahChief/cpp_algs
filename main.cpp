@@ -21,7 +21,7 @@ int main() {
 	std::cout<<" contenido de 7 : "<< (arbol.binsearch(7)) <<std::endl;
 	//arbol.inserta(7,'X');
 	//arbol.remueve(1);
-	arbol.remueve(2);
+	arbol.remueve(4);
 	
 	arbol.find_min(arbol.get_raiz());
 	

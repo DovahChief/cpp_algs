@@ -81,9 +81,6 @@ private:
 				nodo* temp = find_min(nod->hijo_der);
 				nod->data = temp->data; 
 				nod->key = temp->key;
-				temp->padre = nullptr;
-				temp->data = char();
-				temp->key = int();
 				nod->hijo_der = Delete(nod->hijo_der, temp->key);
 			}
 		}
