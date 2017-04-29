@@ -7,7 +7,7 @@
 
 int main() {
 	
-	arbol_binario arbol;
+	arbol_binario<char> arbol;
 	arbol.inserta(4,'c');
 	arbol.inserta(2,'d');
 	arbol.inserta(6,'s');

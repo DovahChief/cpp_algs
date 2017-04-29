@@ -4,15 +4,16 @@
 //prubando con data tipo char
 #include <iostream>
 
+template<typename T>
 struct nodo{
 	int key;
-	char data;
+	T data;
 	
-	nodo* padre = nullptr;
-	nodo* hijo_der = nullptr;
-	nodo* hijo_izq = nullptr;
+	nodo<T>* padre = nullptr;
+	nodo<T>* hijo_der = nullptr;
+	nodo<T>* hijo_izq = nullptr;
 	
-	nodo(int k, char d,nodo* p = nullptr, nodo* hd = nullptr, nodo* hi= nullptr)
+	nodo(int k, char d,nodo<T>* p = nullptr, nodo<T>* hd = nullptr, nodo<T>* hi= nullptr)
 	: key(k), data(d) {
 		padre = p;
 		hijo_der = hd;
@@ -39,13 +40,14 @@ struct nodo{
 
 };
 
+template<typename T>
 class arbol_binario {
 	
 private:
-	nodo* raiz;
+	nodo<T>* raiz;
 	
 	//busca en que node se bede insertar un nuevo valor
-	inline nodo* find_insertN(int _k){
+	inline nodo<T>* find_insertN(int _k){
 		auto focus = raiz;
 		auto pad = focus;
 		while(true){
@@ -55,7 +57,7 @@ private:
 		}
 	}
 ///////////////////////
-	inline nodo* Delete(nodo* nod, int _k){
+	inline nodo<T>* Delete(nodo<T>* nod, int _k){
 		if(nod == nullptr) return (nullptr);
 		
 		else if(_k < nod->key) nod->hijo_izq = Delete(nod->hijo_izq, _k);
@@ -68,17 +70,17 @@ private:
 			}
 			//caso de un hijo
 			else if(nod->hijo_izq == nullptr){
-				nodo* temp = nod;
+				nodo<T>* temp = nod;
 				nod = nod->hijo_der;
 				delete temp;
 			}else if(nod->hijo_der == nullptr){
-				nodo* temp = nod;
+				nodo<T>* temp = nod;
 				nod = nod->hijo_izq;
 				delete temp;
 			} //dos hijos 
 				//cambiando por min right subtree (puede ser max en left subtree)
 			else {
-				nodo* temp = find_min(nod->hijo_der);
+				nodo<T>* temp = find_min(nod->hijo_der);
 				nod->data = temp->data; 
 				nod->key = temp->key;
 				nod->hijo_der = Delete(nod->hijo_der, temp->key);
@@ -94,29 +96,29 @@ public:
 		raiz = nullptr;
 	}
 	
-	inline nodo* get_raiz(){return (raiz);}
+	inline nodo<T>* get_raiz(){return (raiz);}
 	
-	nodo* binsearch(int _k){
+	nodo<T>* binsearch(int _k){
 		
 		if(raiz == nullptr || _k == raiz->key) return (raiz);
-		nodo* focus = raiz;
+		nodo<T>* focus = raiz;
 		while(_k != focus->key){
 			focus = (_k > focus->key)? focus->hijo_der : focus->hijo_izq;
 			if(focus == nullptr ||focus->key == _k ) return (focus);
 		}
 	}
 	
-	void inserta(int _k, char data){
+	void inserta(int _k, T data){
 		if(binsearch(_k) != nullptr){
 			std::cout<<"Ya existe un elemento con la llave que elegiste"<<std::endl;
 			return;
 		}
-		nodo* nuevo = new nodo(_k, data, nullptr, nullptr, nullptr);
+		nodo<T>* nuevo = new nodo<T>(_k, data, nullptr, nullptr, nullptr);
 		if(raiz == nullptr){
 			raiz = nuevo;
 			return;
 		}else {
-			nodo* padr = find_insertN(_k);
+			nodo<T>* padr = find_insertN(_k);
 			if(padr == nullptr) return;
 			nuevo->padre = padr;
 			(_k > padr->key)? padr->hijo_der = nuevo : padr->hijo_izq = nuevo;
@@ -130,23 +132,23 @@ public:
 	}
 
 	//funciones de recorrido
-	void rec_inorden(nodo* focus){
+	void rec_inorden(nodo<T>* focus){
 		if(focus != nullptr){
-		rec_inorden( focus->hijo_izq );
-		focus->print();
-		rec_inorden( focus->hijo_der );
+			rec_inorden( focus->hijo_izq );
+			focus->print();
+			rec_inorden( focus->hijo_der );
 		}
 	}
 	
-	void rec_preorden(nodo* focus){
+	void rec_preorden(nodo<T>* focus){
 		if(focus != nullptr){
-		focus->print();
-		rec_preorden( focus->hijo_izq );
-		rec_preorden( focus->hijo_der );
+			focus->print();
+			rec_preorden( focus->hijo_izq );
+			rec_preorden( focus->hijo_der );
 		}
 	}
 	
-	void rec_posorden(nodo* focus, bool borra = false){
+	void rec_posorden(nodo<T>* focus, bool borra = false){
 		if(focus != nullptr){
 		rec_posorden( focus->hijo_izq );
 		rec_posorden( focus->hijo_der );
@@ -158,7 +160,7 @@ public:
 		}
 	}
 	
-	nodo* find_min(nodo* focus){
+	nodo<T>* find_min(nodo<T>* focus){
 		if(focus == nullptr) return (nullptr);
 		while(focus->hijo_izq != nullptr)
 			focus = focus->hijo_izq;
@@ -166,7 +168,7 @@ public:
 		return (focus);
 	}
 	
-	nodo* find_max(nodo* focus){
+	nodo<T>* find_max(nodo<T>* focus){
 		if(focus == nullptr) return (nullptr);
 		while(focus->hijo_der != nullptr)
 			focus = focus->hijo_der;
