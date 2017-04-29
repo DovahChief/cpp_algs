@@ -36,7 +36,7 @@ struct nodo{
 	void print(){
 		std::cout<<"nodo # "<<this->key<<" dat: "<< this->data <<std::endl;
 	}
-	
+
 };
 
 class arbol_binario {
@@ -54,9 +54,9 @@ private:
 			if(focus == nullptr) return(pad);
 		}
 	}
-	
+///////////////////////
 	inline nodo* Delete(nodo* nod, int _k){
-		if(nod == nullptr) return (nod);
+		if(nod == nullptr) return (nullptr);
 		
 		else if(_k < nod->key) nod->hijo_izq = Delete(nod->hijo_izq, _k);
 		else if(_k > nod->key) nod->hijo_der = Delete(nod->hijo_der, _k);
@@ -64,7 +64,7 @@ private:
 			//es hoja del arbol
 			if(nod->es_hoja()){
 				delete nod;
-				nod == nullptr;
+				nod = nullptr;
 			}
 			//caso de un hijo
 			else if(nod->hijo_izq == nullptr){
@@ -81,15 +81,14 @@ private:
 				nodo* temp = find_min(nod->hijo_der);
 				nod->data = temp->data; 
 				nod->key = temp->key;
-				nod->hijo_der = Delete(nod->hijo_der, temp->data);
+				temp->data = char();
+				temp->key = int();
+				nod->hijo_der = Delete(nod->hijo_der, temp->key);
 			}
 		}
 		
 		return nod;
-	}
-
-	
-	
+	}	
 	
 public:
 	
@@ -129,7 +128,7 @@ public:
 	
 	//borra un elemento del arbol
 	void remueve(int _k){
-		Delete(binsearch(_k), _k);
+		Delete(raiz, _k);
 	}
 
 	//funciones de recorrido

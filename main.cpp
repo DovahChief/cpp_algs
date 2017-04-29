@@ -1,5 +1,3 @@
-#include <iostream>
-#include <vector>
 #include <string>
 
 #include "binsearc.h"
@@ -8,7 +6,6 @@
 
 
 int main() {
-	
 	
 	arbol_binario arbol;
 	arbol.inserta(4,'c');
@@ -23,13 +20,15 @@ int main() {
 	std::cout<<"\n\n Buscando valor  7 : "<< (arbol.binsearch(7)) <<std::endl;
 	std::cout<<" contenido de 7 : "<< (arbol.binsearch(7)) <<std::endl;
 	//arbol.inserta(7,'X');
+	//arbol.remueve(1);
 	arbol.remueve(2);
 	
 	arbol.find_min(arbol.get_raiz());
 	
 	std::cout<<"\n\n----RECORRIDO IN-ORDEN-----"<<std::endl;
 	arbol.rec_inorden(arbol.get_raiz());
-	/*/*
+	
+/*
 	std::cout<<"\n\n----RECORRIDO POS-ORDEN-----"<<std::endl;
 	arbol.rec_posorden(arbol.get_raiz());
 	std::cout<<"\n\n----RECORRIDO PRE-ORDEN-----"<<std::endl;
@@ -94,7 +93,6 @@ int main() {
     
     int val = 12; 
     auto x = binsearch(v, val);
-
     
     std::cout<<"-------buscando---------"<<std::endl;
     std::cout<<((x == true)?"se encontro el ":"no se encontro el ")<<val<<std::endl;
@@ -106,6 +104,6 @@ int main() {
 	arbol.inserta(3, "nodo : 3");
 	arbol.rec_inorden(arbol.get_raiz());
 	
-		*/
+*/
     return 0;
 }
