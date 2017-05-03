@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/jose/Documentos/c++/Algoritmos/Algoritmos/alvTree.h
+iostream
+-
+
 /home/jose/Documentos/c++/Algoritmos/Algoritmos/arbolBin.h
 iostream
 -
@@ -23,6 +27,8 @@ merge.h
 /home/jose/Documentos/c++/Algoritmos/Algoritmos/merge.h
 arbolBin.h
 /home/jose/Documentos/c++/Algoritmos/Algoritmos/arbolBin.h
+alvTree.h
+/home/jose/Documentos/c++/Algoritmos/Algoritmos/alvTree.h
 
 /home/jose/Documentos/c++/Algoritmos/Algoritmos/merge.h
 vector

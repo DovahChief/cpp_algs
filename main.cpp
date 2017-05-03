@@ -3,11 +3,12 @@
 #include "binsearc.h"
 #include "merge.h"
 #include "arbolBin.h"
+#include "alvTree.h"
 
 
 int main() {
 	
-	arbol_binario<char> arbol;
+	alvTree<char> arbol;
 	arbol.inserta(4,'c');
 	arbol.inserta(2,'d');
 	arbol.inserta(6,'s');
@@ -15,15 +16,15 @@ int main() {
 	arbol.inserta(3,'t');
 	arbol.inserta(5,'C');
 	arbol.inserta(7,'S');
-	arbol.inserta(7,'X');
+	arbol.inserta(8,'o');
 	
 	std::cout<<"\n\n Buscando valor  7 : "<< (arbol.binsearch(7)) <<std::endl;
 	std::cout<<" contenido de 7 : "<< (arbol.binsearch(7)) <<std::endl;
 	//arbol.inserta(7,'X');
 	//arbol.remueve(1);
-	arbol.remueve(4);
+	//arbol.remueve(4);
 	
-	arbol.find_min(arbol.get_raiz());
+	//arbol.find_min(arbol.get_raiz());
 	
 	std::cout<<"\n\n----RECORRIDO IN-ORDEN-----"<<std::endl;
 	arbol.rec_inorden(arbol.get_raiz());
