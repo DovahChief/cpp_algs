@@ -6,31 +6,29 @@
 
 #IncludeRegexTransform: 
 
+/home/jose/Documentos/c++/Algoritmos/Algoritmos/alvTree.h
+iostream
+-
+
+/home/jose/Documentos/c++/Algoritmos/Algoritmos/arbolBin.h
+iostream
+-
+
 /home/jose/Documentos/c++/Algoritmos/Algoritmos/binsearc.h
 vector
 -
 
-/home/jose/Documentos/c++/Algoritmos/Algoritmos/bintree.cpp
-bintree.h
-/home/jose/Documentos/c++/Algoritmos/Algoritmos/bintree.h
-
-/home/jose/Documentos/c++/Algoritmos/Algoritmos/bintree.h
-string
--
-iostream
--
-
 /home/jose/Documentos/c++/Algoritmos/Algoritmos/main.cpp
-iostream
+string
 -
 binsearc.h
 /home/jose/Documentos/c++/Algoritmos/Algoritmos/binsearc.h
 merge.h
 /home/jose/Documentos/c++/Algoritmos/Algoritmos/merge.h
-bintree.h
-/home/jose/Documentos/c++/Algoritmos/Algoritmos/bintree.h
-vector
--
+arbolBin.h
+/home/jose/Documentos/c++/Algoritmos/Algoritmos/arbolBin.h
+alvTree.h
+/home/jose/Documentos/c++/Algoritmos/Algoritmos/alvTree.h
 
 /home/jose/Documentos/c++/Algoritmos/Algoritmos/merge.h
 vector

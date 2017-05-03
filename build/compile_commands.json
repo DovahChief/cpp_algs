@@ -3,10 +3,5 @@
   "directory": "/home/jose/Documentos/c++/Algoritmos/Algoritmos/build",
   "command": "/usr/bin/c++     -g   -std=gnu++14 -o CMakeFiles/algoritmos.dir/main.cpp.o -c /home/jose/Documentos/c++/Algoritmos/Algoritmos/main.cpp",
   "file": "/home/jose/Documentos/c++/Algoritmos/Algoritmos/main.cpp"
-},
-{
-  "directory": "/home/jose/Documentos/c++/Algoritmos/Algoritmos/build",
-  "command": "/usr/bin/c++     -g   -std=gnu++14 -o CMakeFiles/algoritmos.dir/bintree.cpp.o -c /home/jose/Documentos/c++/Algoritmos/Algoritmos/bintree.cpp",
-  "file": "/home/jose/Documentos/c++/Algoritmos/Algoritmos/bintree.cpp"
 }
 ]

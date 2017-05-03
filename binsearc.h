@@ -5,7 +5,7 @@
 
 //binsearch para vector ordenado
 template <typename T>
-bool binsearch(const std::vector<T> &v, T elem){
+bool binsearch(const std::vector<T> &v,const T elem){
 	int low= 0, high = (v.size()-1);
 	while(low <= high){
 		int mid = (low+high)/2;
