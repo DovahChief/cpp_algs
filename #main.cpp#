@@ -27,7 +27,7 @@ int main() {
 	//arbol.find_min(arbol.get_raiz());
 	
 	std::cout<<"\n\n----RECORRIDO IN-ORDEN-----"<<std::endl;
-	arbol.recorre(arbol.get_raiz());
+	arbol.rec_inorden(arbol.get_raiz());
 	
 /*
 	std::cout<<"\n\n----RECORRIDO POS-ORDEN-----"<<std::endl;

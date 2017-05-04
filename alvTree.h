@@ -4,6 +4,8 @@
 //prubando con data tipo char
 #include <iostream>
 
+enum recorrido{ INORDEN, PREORDEN, POSORDEN};
+
 template<typename T>
 struct nodo_a {
 	int key;
@@ -90,13 +92,14 @@ private:
 			focus = focus->padre;
 		}
 	}
-	
-	void balancea(nodo_a<T>* focus){}
-	
+
 public:
 	
 	alvTree(){
 		raiz = nullptr;
+	}
+	~alvTree(){
+		recorre(raiz,POSORDEN, true);
 	}
 	
 	inline nodo_a<T>* get_raiz(){return (raiz);}
@@ -138,31 +141,15 @@ public:
 	}
 
 	//funciones de recorrido
-	void rec_inorden(nodo_a<T>* focus){
+
+	void recorre(nodo_a<T>* focus, recorrido tr = INORDEN, bool borra = false){
 		if(focus != nullptr){
-			rec_inorden( focus->hijo_izq );
-			focus->print();
-			rec_inorden( focus->hijo_der );
-		}
-	}
-	
-	void rec_preorden(nodo_a<T>* focus){
-		if(focus != nullptr){
-			focus->print();
-			rec_preorden( focus->hijo_izq );
-			rec_preorden( focus->hijo_der );
-		}
-	}
-	
-	void rec_posorden(nodo_a<T>* focus, bool borra = false){
-		if(focus != nullptr){
-		rec_posorden( focus->hijo_izq );
-		rec_posorden( focus->hijo_der );
-		
-		if(!borra)
-			focus->print();
-		else
-			delete focus;
+			if(tr == PREORDEN) focus->print();
+			recorre( focus->hijo_izq, tr, borra);
+			if(tr == INORDEN) focus->print();
+			recorre( focus->hijo_der, tr, borra);
+			if(tr == POSORDEN && !borra) focus->print();
+			if(borra) delete focus;
 		}
 	}
 	
